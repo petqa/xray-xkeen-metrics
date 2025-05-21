@@ -25,7 +25,7 @@ curl $router_ip:2112/status
 Status:   Прокси-клиент запущен
 ```
 
-### Проверка статуса
+### Рестарт xkeen
 
 ```bash
 curl --cookie "AuthToken=qwerty12345" $router_ip:2112/restart
