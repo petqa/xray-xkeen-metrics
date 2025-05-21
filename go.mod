@@ -5,6 +5,7 @@ go 1.23.3
 require (
 	github.com/hpcloud/tail v1.0.0
 	github.com/prometheus/client_golang v1.20.5
+	gopkg.in/yaml.v2 v2.4.0
 )
 
 require (

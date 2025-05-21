@@ -1,0 +1,16 @@
+# Конфигурационный файл для приложения
+
+# Путь к лог-файлу
+log_file_path: "/opt/var/log/xray/access.log"
+
+# Путь для логов воркеров
+worker_log_path: ""
+
+# Метки для Prometheus
+prometheus_labels:
+  enable_source_ip: true
+  enable_protocol: true
+  enable_dest_ip: true
+  enable_dest_port: true
+  enable_from: true
+  enable_to: true

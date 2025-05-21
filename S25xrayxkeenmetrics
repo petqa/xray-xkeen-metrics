@@ -6,7 +6,7 @@
 ### End service information
 
 name="xray-xkeen-metrics"
-go_app="/opt/bin/$name"
+go_app="/opt/sbin/$name"
 pid_file="/var/run/$name.pid"
 
 go_app_status() {
@@ -27,7 +27,17 @@ start() {
         echo -e "  $name application is already running"
     else
         echo "Starting $name application..."
-        $go_app &
+        if [ -f "$config_file" ]; then
+            echo "Using configuration file: $config_file"
+            $go_app -config "$config_file" &
+        else
+            echo "Configuration file not found. Using environment variables."
+            LOG_FILE_PATH="/opt/var/log/xray/access.log"
+            AUTH_TOKEN="qwerty12345"
+            export LOG_FILE_PATH
+            export AUTH_TOKEN
+            $go_app &
+        fi
         echo $! > "$pid_file"
         echo -e "  $name application started (PID: $(cat $pid_file))"
     fi
